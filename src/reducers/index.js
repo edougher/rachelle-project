@@ -1,11 +1,11 @@
-import { useReducer } from 'react'
-import { combineReducers, compose } from 'redux'
-import userReducer from './userReducer'
-import adventureReducer from './adventureReducer'
+
+import { combineReducers } from 'redux'
+import usersReducer from './usersReducer'
+import adventuresReducer from './adventuresReducer'
 
 
 
 export default combineReducers({
-    user: userReducer,
-    adventure: adventureReducer
+    users: usersReducer,
+    adventures: adventuresReducer
 })
