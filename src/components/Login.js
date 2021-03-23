@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loginSuccess } from '../actions/index'
+import { displayAdventures, loginSuccess } from '../actions/index'
 
 
 class Login extends Component {
@@ -46,15 +46,18 @@ handleSubmit = (event) => {
             }
         })
     }
+getAdventures = () => {
+    fetch('http://localhost:3000/adventures')
+    .then(resp => resp.json())
+    .then(adventures => {
+    console.log(adventures)
+      this.props.displayAdventures(adventures)
+   })
 
 
-
-
-
-
-
-    render() {
-        // console.log(this.props)
+}
+render() {
+        this.getAdventures()
         return (
             <div>
             {this.state.error ? <h3 style={{color: 'red'}}>{this.state.error}</h3> : null }
@@ -80,7 +83,8 @@ handleSubmit = (event) => {
 
 //points to whatever action we associtate with it
 const mapDispatchToProps = {
-    loginSuccess: loginSuccess
+    loginSuccess: loginSuccess,
+    displayAdventures: displayAdventures
 }
 
 

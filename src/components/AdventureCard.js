@@ -6,14 +6,13 @@ import { Card, Image } from 'semantic-ui-react'
 
 class AdventureCard extends Component {
     render() {
-      // console.log(this.props)
         return (
             <Card>
-              <img src={`http://localhost:3000/${this.props.img}`} />
+              <img src={`http://localhost:3000/${this.props.adventure.image}`} />
             <Card.Content>
              
               <Card.Description> 
-                {/*this.props.adventure.description*/}
+                {this.props.adventure.adventure.description}
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
@@ -25,7 +24,7 @@ class AdventureCard extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    img: state.adventures
+    state: state
   }
 }
 

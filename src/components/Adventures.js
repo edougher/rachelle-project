@@ -6,44 +6,49 @@ import { displayAdventures } from '../actions/index'
 
 class Adventures extends Component {
 state = {
-    img: ''
+    adventures: ''
 }
 
- componentDidMount() {
-     fetch('http://localhost:3000/adventures')
+getAdventures = () => {
+    fetch('http://localhost:3000/adventures')
      .then(resp => resp.json())
      .then(adventures => {
-         debugger
          console.log(adventures)
+        //this.state.adventures = adventures
         this.props.displayAdventures(adventures)
      })
- }
+}
 
-  //renderAdventures = () => {
-  //    return this.props.adventures.map(adventure =>(
-  //     <AdventureCard 
-  //     key={adventure.id}
-  //     adventure={adventure}
-  //     img={this.state.img} />
-  //     ))
-  //}
+
+    renderAdventures = () => {
+        return this.props.state.adventures.all.map(adventure =>(
+            <AdventureCard 
+            key={adventure.id}
+            adventure={adventure}
+            image={adventure.image} />
+        ))
+    }
+     
+      
+  
 
     render() {
-        
         return (
              <div>
                 <h4>adventures</h4>
-                <AdventureCard 
-                />
+                {
+                    this.renderAdventures()
+
+                }
             </div>
         )
     }
 }
 
 function mapStateToProps(state){
-    // console.log(state.adventure)
+     console.log(state.adventure)
     return {
-        adventures: state.adventures
+        state: state
     }
 }
 
