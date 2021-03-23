@@ -9,12 +9,11 @@ class AdventureCard extends Component {
       // console.log(this.props)
         return (
             <Card>
-                {/* <img src="public/images/Holi-Festival-in-Nandgaon-India.jpg" alt="image" /> */}
+              <img src={`http://localhost:3000/${this.props.img}`} />
             <Card.Content>
-              <Card.Header>{this.props.adventure.title}</Card.Header>
-              <Card.Meta>{this.props.adventure.location}</Card.Meta>
-              <Card.Description>
-                {this.props.adventure.description}
+             
+              <Card.Description> 
+                {/*this.props.adventure.description*/}
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
@@ -24,8 +23,13 @@ class AdventureCard extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+  return {
+    img: state.adventures
+  }
+}
 
-export default AdventureCard
+export default connect(mapStateToProps)(AdventureCard)
 
 
 
