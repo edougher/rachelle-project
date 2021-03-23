@@ -7,6 +7,7 @@ class Home extends Component {
 
 
     render(){
+        console.log(this.props)
         
         return(
             <div>
@@ -17,8 +18,10 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.adventures)
     return {
-        user: state.user
+        user: state.user,
+        adventures: state.adventures
     }
 }
 

@@ -12,3 +12,11 @@ export const currentUser = (user) => {
         user: user
     }
 }
+
+export const displayAdventures = (adventures) => {
+    return {
+        
+        type: 'DISPLAY_ADVENTURES',
+        adventures: adventures
+    }
+}

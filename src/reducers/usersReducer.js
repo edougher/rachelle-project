@@ -5,11 +5,17 @@ const users = (state= null ,action) => {
                 id: action.user.id,
                 userName: action.user.userName
             }
-            case 'CURRENT_USER':
+        case 'CURRENT_USER':
             return {
                 id: action.user.id,
                 userName: action.user.userName
             }
+        case 'ADD_USER':
+            debugger
+            return {
+                id: action.user.id
+            }
+        
         default:
             return state
     }

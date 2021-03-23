@@ -1,26 +1,24 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 
 
 class AdventureCard extends Component {
     render() {
+      // console.log(this.props)
         return (
             <Card>
-            {/* <Image src='https://react.semantic-ui.com/images/avatar/large/daniel.jpg' wrapped ui={false} /> */}
+                {/* <img src="public/images/Holi-Festival-in-Nandgaon-India.jpg" alt="image" /> */}
             <Card.Content>
-              <Card.Header>Daniel</Card.Header>
-              <Card.Meta>Joined in 2016</Card.Meta>
+              <Card.Header>{this.props.adventure.title}</Card.Header>
+              <Card.Meta>{this.props.adventure.location}</Card.Meta>
               <Card.Description>
-                Daniel is a comedian living in Nashville.
+                {this.props.adventure.description}
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <a>
-                <Icon name='user' />
-                10 Friends
-              </a>
+            
             </Card.Content>
           </Card>
         )

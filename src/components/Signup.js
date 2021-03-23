@@ -1,33 +1,67 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+
+class Signup extends Component {
+
+    state = {
+        userName: '',
+        password: '',
+        confirmPassword: ''
+    }
 
 
 
-class Sighnup extends Component {
+
+handleChange = (event) => {
+    // console.log(event.target.value)
+    this.setState({
+        [event.target.name]: event.target.value
+    })
+}
+
+handleSubmit = (event) => {
+    event.preventDefault()
+    const reqObj = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state)
+    }
+    debugger
+    fetch('http://localhost:3000/users', reqObj)
+    .then(resp => resp.json())
+    .then(respData =>{
+        console.log(respData)
+    })
+
+}
     render() {
         return (
-            <form class="ui form">
-            <div class="required field">
+            <form className="ui form" onSubmit={this.handleSubmit}>
+            <div className="required field">
                 <label>UserName</label>
-                    <div class="ui input">
-                        <input type="text" placeholder="UserName"/>
+                    <div className="ui input">
+                        <input type="text" placeholder="UserName" onChange={this.handleChange}/>
                     </div>
                 </div>
-                    <div class="required field">
+                    <div className="required field">
                         <label>Password</label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Password"/>
+                            <div className="ui input">
+                                <input type="text" placeholder="Password" onChange={this.handleChange}/>
                             </div>
                     </div>
-                    <div class="required field">
+                    <div className="required field">
                         <label>Confirm Password</label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Confirm Password"/>
+                            <div className="ui input">
+                                <input type="text" placeholder="Confirm Password" onChange={this.handleChange}/>
                             </div>
                     </div>
-                    <button type="submit" className="ui button">Submit</button>
+                    <button type="submit" className="ui button">Create Account</button>
         </form>
         )
     }
 }
 
-export default Sighnup
+export default Signup
